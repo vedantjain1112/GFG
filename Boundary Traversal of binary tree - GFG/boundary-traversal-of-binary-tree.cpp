@@ -106,75 +106,75 @@ struct Node
 class Solution {
 public:
    
-void leftBoundary(Node* root, std::vector<int>& result) {
-    if (!root)
-        return;
-
-    while (root) {
-        int data = root->data;
-
-        if (root->left) {
-            result.push_back(data);
-            root = root->left;
-        } else if (root->right) {
-            result.push_back(data);
-            root = root->right;
-        } else {
-            break;
+    void leftBoundary(Node* root, vector<int>& result) {
+        if (!root)
+            return;
+    
+        while (root) {
+            int data = root->data;
+    
+            if (root->left) {
+                result.push_back(data);
+                root = root->left;
+            } else if (root->right) {
+                result.push_back(data);
+                root = root->right;
+            } else {
+                break;
+            }
         }
     }
-}
 
-void leafNodes(Node* root, std::vector<int>& result) {
-    if (!root)
-        return;
+    void leafNodes(Node* root, std::vector<int>& result) {
+        if (!root)
+            return;
+    
+        leafNodes(root->left, result);
+    
+        if (!root->left && !root->right) {
+            result.push_back(root->data);
+        }
+    
+        leafNodes(root->right, result);
+    }
 
-    leafNodes(root->left, result);
+    void rightBoundary(Node* root, vector<int>& result) {
+        stack<int> st;
+    
+        while (root) {
+            int data = root->data;
+    
+            if (root->right) {
+                st.push(data);
+                root = root->right;
+            } else if (root->left) {
+                st.push(data);
+                root = root->left;
+            } else {
+                break;
+            }
+        }
+    
+        while (!st.empty()) {
+            result.push_back(st.top());
+            st.pop();
+        }
+    }
 
-    if (!root->left && !root->right) {
+    vector<int> boundary(Node* root) {
+        vector<int> result;
+    
+        if (!root)
+            return result;
+    
         result.push_back(root->data);
+    
+        leftBoundary(root->left, result);
+        leafNodes(root->left, result);
+        leafNodes(root->right, result);
+        rightBoundary(root->right, result);
+    
     }
-
-    leafNodes(root->right, result);
-}
-
-void rightBoundary(Node* root, std::vector<int>& result) {
-    std::stack<int> st;
-
-    while (root) {
-        int data = root->data;
-
-        if (root->right) {
-            st.push(data);
-            root = root->right;
-        } else if (root->left) {
-            st.push(data);
-            root = root->left;
-        } else {
-            break;
-        }
-    }
-
-    while (!st.empty()) {
-        result.push_back(st.top());
-        st.pop();
-    }
-}
-
-std::vector<int> boundary(Node* root) {
-    std::vector<int> result;
-
-    if (!root)
-        return result;
-
-    result.push_back(root->data);
-
-    leftBoundary(root->left, result);
-    leafNodes(root->left, result);
-    leafNodes(root->right, result);
-    rightBoundary(root->right, result);
-
-}
 };
 
 //{ Driver Code Starts.
