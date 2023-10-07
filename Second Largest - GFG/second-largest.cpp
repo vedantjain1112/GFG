@@ -7,35 +7,33 @@ using namespace std;
 //User function template for C++
 class Solution{
 public:	
-	// Function returns the second
-	// largest elements
-int print2largest(int arr[], int n) {
-    int largest = INT_MIN;
-    int secondLargest = INT_MIN;
-
- 
-    for (int i = 0; i < n; ++i) {
-   
-        if (arr[i] > largest) {
-        
-            secondLargest = largest;
+    int print2largest(int arr[], int n) {
+        int largest = INT_MIN;
+        int secondLargest = INT_MIN;
+    
      
-            largest = arr[i];
+        for (int i = 0; i < n; ++i) {
+       
+            if (arr[i] > largest) {
+            
+                secondLargest = largest;
+         
+                largest = arr[i];
+            }
+    
+            else if (arr[i] > secondLargest && arr[i] != largest) {
+    
+                secondLargest = arr[i];
+            }
         }
-
-        else if (arr[i] > secondLargest && arr[i] != largest) {
-
-            secondLargest = arr[i];
+    
+    
+        if (secondLargest == INT_MIN) {
+            return -1;
         }
+    
+        return secondLargest;
     }
-
-
-    if (secondLargest == INT_MIN) {
-        return -1;
-    }
-
-    return secondLargest;
-}
 };
 
 //{ Driver Code Starts.
