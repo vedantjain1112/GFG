@@ -100,18 +100,17 @@ struct Node
 class Solution
 {
     public:
-    //Function to return a list of nodes visible from the top view 
-        vector<int> topView(Node* root) {
-        std::vector<int> result;
+    vector<int> topView(Node* root) {
+        vector<int> result;
         if (!root)
             return result;
     
-        // Pair for storing node and its horizontal distance from the root
-        std::queue<std::pair<Node*, int>> q;
-        // Map to store topmost node for each horizontal distance
-        std::map<int, int> topViewMap;
+  
+        queue<std::pair<Node*, int>> q;
+
+        map<int, int> topViewMap;
     
-        // Enqueue root node with horizontal distance 0
+
         q.push({root, 0});
     
         while (!q.empty()) {
@@ -119,16 +118,16 @@ class Solution
             int hd = q.front().second;
             q.pop();
     
-            // If the horizontal distance is not present in the map, add it
+          
             if (topViewMap.find(hd) == topViewMap.end()) {
                 topViewMap[hd] = currNode->data;
             }
     
-            // Enqueue left child with horizontal distance - 1
+          
             if (currNode->left) {
                 q.push({currNode->left, hd - 1});
             }
-            // Enqueue right child with horizontal distance + 1
+ 
             if (currNode->right) {
                 q.push({currNode->right, hd + 1});
             }
