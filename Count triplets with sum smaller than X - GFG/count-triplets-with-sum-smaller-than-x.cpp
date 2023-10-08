@@ -10,32 +10,32 @@ class Solution{
 	long long countTriplets(long long arr[], int n, long long sum)
 	{
 	    
-        sort(arr, arr + n);
-    
-        long long count = 0;
-    
-        for (int i = 0; i < n - 2; ++i) {
+            sort(arr, arr + n);
+        
+            long long count = 0;
+        
+            for (int i = 0; i < n - 2; ++i) {
+              
+                int left = i + 1, right = n - 1;
+        
+              
+                while (left < right) {
+                    long long currentSum = arr[i] + arr[left] + arr[right];
+        
+           
+                    if (currentSum < sum) {
           
-            int left = i + 1, right = n - 1;
-    
-          
-            while (left < right) {
-                long long currentSum = arr[i] + arr[left] + arr[right];
-    
-       
-                if (currentSum < sum) {
-      
-                    count += (right - left);
-    
-                    left++;
-                } else {
-                    
-                    right--;
+                        count += (right - left);
+        
+                        left++;
+                    } else {
+                        
+                        right--;
+                    }
                 }
             }
-        }
-
-    return count;
+    
+        return count;
 	}
 		 
 
