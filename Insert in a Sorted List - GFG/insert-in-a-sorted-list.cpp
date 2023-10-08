@@ -66,10 +66,10 @@ class Solution{
 
     void printList(Node* head) {
         while (head != nullptr) {
-            std::cout << head->data << " ";
+            cout << head->data << " ";
             head = head->next;
         }
-        cout << std::endl;
+        cout <<endl;
     }
 };
 
