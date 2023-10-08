@@ -42,7 +42,6 @@ struct Node
 
 class Solution{
   public:
-    // Should return head of the modified linked list
     Node* sortedInsert(Node* head, int data) {
         Node* newNode = new Node(data);
     
