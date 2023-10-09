@@ -100,7 +100,7 @@ class Solution{
     public:
    
     int height(Node* node) {
-        if (node == nullptr) {
+        if (node == NULL) {
             return 0; 
         } else {
     
@@ -108,7 +108,7 @@ class Solution{
             int rightHeight = height(node->right);
     
     
-            return std::max(leftHeight, rightHeight) + 1;
+            return max(leftHeight, rightHeight) + 1;
         }
     }
 };
