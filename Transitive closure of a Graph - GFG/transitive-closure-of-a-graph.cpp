@@ -9,11 +9,10 @@ using namespace std;
 
 class Solution{
 public:
-  vector<vector<int>> transitiveClosure(int N, vector<vector<int>> graph)
+    
+    vector<vector<int>> transitiveClosure(int N, vector<vector<int>> graph)
     {
         vector<vector<int>> closure = graph;
-    
-
         for (int i = 0; i < N; i++)
         {
             for (int j = 0; j < N; j++)
@@ -28,7 +27,6 @@ public:
                 }
             }
         }
-    
         for (int k = 0; k < N; k++)
         {
             for (int i = 0; i < N; i++)
