@@ -6,9 +6,6 @@ using namespace std;
 // } Driver Code Ends
 class Solution{
     public:
-    // arr: input array
-    // n: size of array
-    //Function to find the sum of contiguous subarray with maximum sum.
     long long maxSubarraySum(int arr[], int n){
         
         long long int sum = 0;
@@ -21,9 +18,7 @@ class Solution{
                 sum = 0;
             }
         }
-        
         return maxi;
-        
     }
 };
 
