@@ -9,7 +9,6 @@ var map = function(arr, fn) {
         if (typeof fn === 'function') {
             newArray.push(fn(arr[i], i));
         } else {
-            // If the function doesn't take the index, call it with just the element value
             newArray.push(fn(arr[i]));
         }
     }
